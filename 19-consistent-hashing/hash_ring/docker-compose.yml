@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  memcached-01:
+    container_name: memcached-01
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - '11211:11211'
+  memcached-02:
+    container_name: memcached-02
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - '11212:11211'
+    depends_on:
+      - memcached-01
+  memcached-03:
+    container_name: memcached-03
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - '11213:11211'
+    depends_on:
+      - memcached-02
+  memcached-04:
+    container_name: memcached-04
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - '11214:11211'
+    depends_on:
+      - memcached-03
+  memcached-05:
+    container_name: memcached-05
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - '11215:11211'
+    depends_on:
+      - memcached-04
